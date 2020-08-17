@@ -96,18 +96,18 @@ public class Main {
             switch (yourFuelTank) {
 
                 case 100:
-                    System.out.println("Your choice is 100  ");
+                    System.out.println("Your choice is 100l  ");
                     trolleybus.setFuelTank(100);
                     break;
 
                 case 150:
-                    System.out.println("Your choice is 150 ");
+                    System.out.println("Your choice is 150l ");
                     trolleybus.setFuelTank(150);
                     trolleybus.setCoefficientPrice(1.2);
                     break;
 
                 case 200:
-                    System.out.println("Your choice is 200 ");
+                    System.out.println("Your choice is 200l ");
                     trolleybus.setFuelTank(200);
                     trolleybus.setCoefficientPrice(1.4);
                     break;

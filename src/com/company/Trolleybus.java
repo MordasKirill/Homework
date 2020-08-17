@@ -12,7 +12,9 @@ public  class Trolleybus {
 
         return "Well well . . .  " +
                 " The color of trolleybus is " + color + " it's price is " + sum*coefficientPrice + " $" +
-                ", fuel tank is " + fuelTank + " litres. ";
+                ", fuel tank is " + fuelTank + " litres. " +
+                "See you soon! ";
+
     }
 
     public String getColor(){
