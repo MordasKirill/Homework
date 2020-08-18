@@ -5,7 +5,6 @@ import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import java.security.InvalidParameterException;
 import java.util.Scanner;
 
-
 public class Main {
 
     enum Colours {
@@ -16,8 +15,20 @@ public class Main {
         RED
 
     }
+    private enum FuelTank{
 
+        FUEL_TANK_100l(100),
+        FUEL_TANK_150l(150),
+        FUEL_TANK_200l(200);
 
+        private int value;
+
+        private FuelTank(int value){
+
+            this.value = value;
+
+        }
+    }
     public static void main(String[] args) {
         Trolleybus trolleybus = new Trolleybus();
 
@@ -52,31 +63,27 @@ public class Main {
             switch (Colours.valueOf(colour.toUpperCase())) {
 
                 case WHITE:
-                    trolleybus.setColor("White");
+                    trolleybus.setColor(Colours.WHITE);
                     trolleybus.setPrice(9000);
-                    trolleybus.setSum(9000);
-                    System.out.println("Your choice is White ");
+                    System.out.println("Your choice is: "+ Colours.WHITE);
                     break;
 
                 case BLUE:
-                    trolleybus.setColor("Blue");
+                    trolleybus.setColor(Colours.BLUE);
                     trolleybus.setPrice(11000);
-                    trolleybus.setSum(11000);
-                    System.out.println("Your choice is Blue ");
+                    System.out.println("Your choice is: "+ Colours.BLACK);
                     break;
 
                 case BLACK:
-                    trolleybus.setColor("Black");
+                    trolleybus.setColor(Colours.BLACK);
                     trolleybus.setPrice(15000);
-                    trolleybus.setSum(15000);
-                    System.out.println("Your choice is Black ");
+                    System.out.println("Your choice is: "+ Colours.BLACK);
                     break;
 
                 case RED:
-                    trolleybus.setColor("Red");
+                    trolleybus.setColor(Colours.RED);
                     trolleybus.setPrice(10000);
-                    trolleybus.setSum(10000);
-                    System.out.println("Your choice is Red ");
+                    System.out.println("Your choice is: "+ Colours.RED);
                     break;
 
                 default:
@@ -96,18 +103,18 @@ public class Main {
             switch (yourFuelTank) {
 
                 case 100:
-                    System.out.println("Your choice is 100l  ");
+                    System.out.println("Your choice is:  " + FuelTank.FUEL_TANK_100l.value + "l" );
                     trolleybus.setFuelTank(100);
                     break;
 
                 case 150:
-                    System.out.println("Your choice is 150l ");
+                    System.out.println("Your choice is: " + FuelTank.FUEL_TANK_150l.value + "l");
                     trolleybus.setFuelTank(150);
                     trolleybus.setCoefficientPrice(1.2);
                     break;
 
                 case 200:
-                    System.out.println("Your choice is 200l ");
+                    System.out.println("Your choice is: "+ FuelTank.FUEL_TANK_200l.value + "l");
                     trolleybus.setFuelTank(200);
                     trolleybus.setCoefficientPrice(1.4);
                     break;
