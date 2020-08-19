@@ -2,11 +2,11 @@ package com.company;
 
 import java.util.Objects;
 
-public  class Trolleybus extends Transport{
+public  class Tram extends Transport{
 
     private String type;
     private Main.Colours color;
-    private int fuelTank;
+    private int capacity;
     private int price;
     private double coefficientPrice;
 
@@ -14,8 +14,8 @@ public  class Trolleybus extends Transport{
     public String toString() {
 
         return "Well well . . .  " +
-                " The color of trolleybus is " + color + " it's price is " + price*coefficientPrice + " $" +
-                ", fuel tank is " + fuelTank + " litres. " +
+                " The color of " + type +"is " + color + " it's price is " + price*coefficientPrice + " $" +
+                ", its capacity is " + capacity + " passengers. " +
                 "See you soon! ";
 
     }
@@ -23,8 +23,8 @@ public  class Trolleybus extends Transport{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Trolleybus)) return false;
-        Trolleybus that = (Trolleybus) o;
+        if (!(o instanceof Tram)) return false;
+        Tram that = (Tram) o;
         return getFuelTank() == that.getFuelTank() &&
                 getPrice() == that.getPrice() &&
                 Double.compare(that.getCoefficientPrice(), getCoefficientPrice()) == 0 &&
@@ -45,11 +45,11 @@ public  class Trolleybus extends Transport{
     }
 
     private int getFuelTank(){
-        return fuelTank;
+        return capacity;
     }
 
     protected void setFuelTank(int fuelTank){
-        this.fuelTank = fuelTank;
+        this.capacity = fuelTank;
     }
 
     private int getPrice(){
@@ -70,5 +70,3 @@ public  class Trolleybus extends Transport{
 
 
 }
-
-

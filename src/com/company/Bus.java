@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Objects;
 
-public  class Trolleybus extends Transport{
+public  class Bus extends Transport{
 
     private String type;
     private Main.Colours color;
@@ -23,8 +23,8 @@ public  class Trolleybus extends Transport{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Trolleybus)) return false;
-        Trolleybus that = (Trolleybus) o;
+        if (!(o instanceof Bus)) return false;
+        Bus that = (Bus) o;
         return getFuelTank() == that.getFuelTank() &&
                 getPrice() == that.getPrice() &&
                 Double.compare(that.getCoefficientPrice(), getCoefficientPrice()) == 0 &&
@@ -70,5 +70,3 @@ public  class Trolleybus extends Transport{
 
 
 }
-
-

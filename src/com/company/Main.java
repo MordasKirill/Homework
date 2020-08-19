@@ -3,6 +3,8 @@ package com.company;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
 import java.security.InvalidParameterException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
@@ -12,7 +14,10 @@ public class Main {
         WHITE,
         BLUE,
         BLACK,
-        RED
+        RED,
+        YELLOW,
+        MOON,
+        ORANGE
 
     }
     private enum FuelTank{
@@ -28,14 +33,43 @@ public class Main {
             this.value = value;
 
         }
+
     }
+    static class MyClass {
+        int fuelTank;
+        int price;
+        Colours colour;
+
+        // Ниже конструктор
+        MyClass(int parsedFuelTank, Colours parsedColour, int parsedPrice) {
+            fuelTank = parsedFuelTank;
+            colour = parsedColour;
+            price = parsedPrice;
+        }
+    }
+
     public static void main(String[] args) {
+
         Trolleybus trolleybus = new Trolleybus();
+        Bus bus = new Bus();
+        Tram tram = new Tram();
+
+
+        MyClass troll1 = new MyClass(100,Colours.MOON, 10000);
+        MyClass troll2 = new MyClass(110,Colours.YELLOW, 11500);
+        MyClass troll3 = new MyClass(120,Colours.ORANGE, 12500);
+        MyClass bus1 = new MyClass(130,Colours.MOON, 5500);
+        MyClass bus2 = new MyClass(130,Colours.YELLOW, 6500);
+        MyClass bus3 = new MyClass(130,Colours.ORANGE, 8500);
+        MyClass tram1 = new MyClass(130,Colours.MOON, 20500);
+        MyClass tram2 = new MyClass(130,Colours.YELLOW, 23500);
+        MyClass tram3 = new MyClass(130,Colours.ORANGE, 19500);
+
 
 
         System.out.println("Hello, it's dispatcher of trolleybus fleet");
         System.out.println("If you want to watch some info press 0 ");
-        System.out.println("Else tap 5");
+        System.out.println("Else tap 1");
         Scanner Choice = new Scanner(System.in);
         int yourChoice = Choice.nextInt();
 
@@ -47,16 +81,60 @@ public class Main {
                         "what do you want! \n");
                 break;
 
-            case 5:
+            case 1:
                 System.out.println("Bye!");
                 System.exit(0);
         }
+        System.out.println("You can choose a ready modification, or build your own");
 
+        System.out.println("Tap 1 "+troll1.colour + " " + troll1.fuelTank +"l " +troll1.price + "$");
+        System.out.println("Tap 2 "+troll2.colour + " " + troll2.fuelTank +"l " +troll2.price + "$");
+        System.out.println("Tap 3 "+troll3.colour + " " + troll3.fuelTank +"l " +troll3.price + "$");
+        System.out.println("Tap 5 to skip ");
+
+        int[] array = {troll1.price, troll2.price, troll3.price};
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
+
+        Scanner Modification = new Scanner(System.in);
+        int yourModification = Modification.nextInt();
+
+        switch (yourModification){
+            case 1:
+                trolleybus.setPrice(troll1.price);
+                trolleybus.setColor(Colours.YELLOW);
+                trolleybus.setFuelTank(troll1.fuelTank);
+                trolleybus.setCoefficientPrice(1);
+                System.out.println(trolleybus.toString());
+                System.exit(0);
+
+            case 2:
+                trolleybus.setPrice(troll2.price);
+                trolleybus.setColor(Colours.ORANGE);
+                trolleybus.setFuelTank(troll2.fuelTank);
+                trolleybus.setCoefficientPrice(1);
+                System.out.println(trolleybus.toString());
+                System.exit(0);
+
+            case 3:
+                trolleybus.setPrice(troll3.price);
+                trolleybus.setColor(Colours.MOON);
+                trolleybus.setFuelTank(troll3.fuelTank);
+                trolleybus.setCoefficientPrice(1);
+                System.out.println(trolleybus.toString());
+                System.exit(0);
+
+            case 5:
+                break;
+
+        }
         System.out.println("Choose your color - \n" +
                 "    WHITE 9000$,\n" +
                 "    BLUE 11000$,\n" +
                 "    BLACK 15000$,\n" +
                 "    RED 10000$");
+
         Scanner Colour = new Scanner(System.in);
         //Colours[] allColours = Colours.values();
         String colour = Colour.nextLine();
