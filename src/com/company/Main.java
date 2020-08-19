@@ -28,21 +28,35 @@ public class Main {
 
         private int value;
 
-        private FuelTank(int value){
+        FuelTank(int value){
 
             this.value = value;
 
         }
 
     }
-    static class MyClass {
+
+    protected static class MyClass {
         int fuelTank;
         int price;
         Colours colour;
 
-        // Ниже конструктор
+
         MyClass(int parsedFuelTank, Colours parsedColour, int parsedPrice) {
             fuelTank = parsedFuelTank;
+            colour = parsedColour;
+            price = parsedPrice;
+        }
+    }
+
+    protected static class MyClassParsed {
+        int capacity;
+        int price;
+        Colours colour;
+
+
+        MyClassParsed(int parsedCapacity, Colours parsedColour, int parsedPrice) {
+            capacity = parsedCapacity;
             colour = parsedColour;
             price = parsedPrice;
         }
@@ -54,16 +68,17 @@ public class Main {
         Bus bus = new Bus();
         Tram tram = new Tram();
 
-
         MyClass troll1 = new MyClass(100,Colours.MOON, 10000);
         MyClass troll2 = new MyClass(110,Colours.YELLOW, 11500);
         MyClass troll3 = new MyClass(120,Colours.ORANGE, 12500);
-        MyClass bus1 = new MyClass(130,Colours.MOON, 5500);
-        MyClass bus2 = new MyClass(130,Colours.YELLOW, 6500);
-        MyClass bus3 = new MyClass(130,Colours.ORANGE, 8500);
-        MyClass tram1 = new MyClass(130,Colours.MOON, 20500);
-        MyClass tram2 = new MyClass(130,Colours.YELLOW, 23500);
-        MyClass tram3 = new MyClass(130,Colours.ORANGE, 19500);
+
+        MyClass bus1 = new MyClass(100,Colours.MOON, 5500);
+        MyClass bus2 = new MyClass(110,Colours.YELLOW, 6500);
+        MyClass bus3 = new MyClass(120,Colours.ORANGE, 8500);
+
+        MyClassParsed tram1 = new MyClassParsed(70,Colours.MOON, 20500);
+        MyClassParsed tram2 = new MyClassParsed(90,Colours.YELLOW, 23500);
+        MyClassParsed tram3 = new MyClassParsed(120,Colours.ORANGE, 19500);
 
 
 
@@ -87,14 +102,23 @@ public class Main {
         }
         System.out.println("You can choose a ready modification, or build your own");
 
-        System.out.println("Tap 1 "+troll1.colour + " " + troll1.fuelTank +"l " +troll1.price + "$");
-        System.out.println("Tap 2 "+troll2.colour + " " + troll2.fuelTank +"l " +troll2.price + "$");
-        System.out.println("Tap 3 "+troll3.colour + " " + troll3.fuelTank +"l " +troll3.price + "$");
-        System.out.println("Tap 5 to skip ");
+        System.out.println("Tap 1 Trolleybus "+troll1.colour + " " + troll1.fuelTank +"l " +troll1.price + "$");
+        System.out.println("Tap 2 Trolleybus "+troll2.colour + " " + troll2.fuelTank +"l " +troll2.price + "$");
+        System.out.println("Tap 3 Trolleybus "+troll3.colour + " " + troll3.fuelTank +"l " +troll3.price + "$");
 
-        int[] array = {troll1.price, troll2.price, troll3.price};
+        System.out.println("Tap 4 Bus "+bus1.colour + " " + bus1.fuelTank +"l " +bus1.price + "$");
+        System.out.println("Tap 5 Bus "+bus2.colour + " " + bus2.fuelTank +"l " +bus2.price + "$");
+        System.out.println("Tap 6 Bus "+bus3.colour + " " + bus3.fuelTank +"l " +bus3.price + "$");
+
+        System.out.println("Tap 7 Tram "+tram1.colour + " " + tram1.capacity +" Passengers " +tram1.price + "$");
+        System.out.println("Tap 8 Tram "+tram2.colour + " " + tram2.capacity +" Passengers " +tram2.price + "$");
+        System.out.println("Tap 9 Tram "+tram3.colour + " " + tram3.capacity +" Passengers " +tram3.price + "$");
+
+        System.out.println("Tap 0 to skip ");
+
+        int[] array = {troll1.price, troll2.price, troll3.price, bus1.price, bus2.price, bus3.price};
         for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i]);
+           // System.out.println(array[i]);
         }
 
         Scanner Modification = new Scanner(System.in);
@@ -106,6 +130,7 @@ public class Main {
                 trolleybus.setColor(Colours.YELLOW);
                 trolleybus.setFuelTank(troll1.fuelTank);
                 trolleybus.setCoefficientPrice(1);
+                trolleybus.setType("Trolleybus");
                 System.out.println(trolleybus.toString());
                 System.exit(0);
 
@@ -114,6 +139,7 @@ public class Main {
                 trolleybus.setColor(Colours.ORANGE);
                 trolleybus.setFuelTank(troll2.fuelTank);
                 trolleybus.setCoefficientPrice(1);
+                trolleybus.setType("Trolleybus");
                 System.out.println(trolleybus.toString());
                 System.exit(0);
 
@@ -122,10 +148,58 @@ public class Main {
                 trolleybus.setColor(Colours.MOON);
                 trolleybus.setFuelTank(troll3.fuelTank);
                 trolleybus.setCoefficientPrice(1);
+                trolleybus.setType("Trolleybus");
                 System.out.println(trolleybus.toString());
                 System.exit(0);
-
+            case 4:
+                bus.setPrice(bus1.price);
+                bus.setColor(Colours.MOON);
+                bus.setFuelTank(bus1.fuelTank);
+                bus.setCoefficientPrice(1);
+                bus.setType("Bus");
+                System.out.println(bus.toString());
+                System.exit(0);
             case 5:
+                bus.setPrice(bus2.price);
+                bus.setColor(Colours.YELLOW);
+                bus.setFuelTank(bus2.fuelTank);
+                bus.setCoefficientPrice(1);
+                bus.setType("Bus");
+                System.out.println(bus.toString());
+                System.exit(0);
+            case 6:
+                bus.setPrice(bus3.price);
+                bus.setColor(Colours.ORANGE);
+                bus.setFuelTank(bus3.fuelTank);
+                bus.setCoefficientPrice(1);
+                bus.setType("Bus");
+                System.out.println(bus.toString());
+                System.exit(0);
+            case 7:
+                tram.setPrice(tram1.price);
+                tram.setColor(Colours.MOON);
+                tram.setFuelTank(tram1.capacity);
+                tram.setCoefficientPrice(1);
+                tram.setType("Tram");
+                System.out.println(tram.toString());
+                System.exit(0);
+            case 8:
+                tram.setPrice(tram2.price);
+                tram.setColor(Colours.YELLOW);
+                tram.setCapacity(tram2.capacity);
+                tram.setCoefficientPrice(1);
+                tram.setType("Tram");
+                System.out.println(tram.toString());
+                System.exit(0);
+            case 9:
+                tram.setPrice(tram3.price);
+                tram.setColor(Colours.ORANGE);
+                tram.setFuelTank(tram3.capacity);
+                tram.setCoefficientPrice(1);
+                tram.setType("Tram");
+                System.out.println(tram.toString());
+                System.exit(0);
+            case 0:
                 break;
 
         }
@@ -183,6 +257,7 @@ public class Main {
                 case 100:
                     System.out.println("Your choice is:  " + FuelTank.FUEL_TANK_100l.value + "l" );
                     trolleybus.setFuelTank(100);
+                    trolleybus.setCoefficientPrice(1);
                     break;
 
                 case 150:
