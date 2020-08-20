@@ -1,11 +1,6 @@
 package com.company;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-
-import java.security.InvalidParameterException;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -80,6 +75,17 @@ public class Main {
         MyClassParsed tram2 = new MyClassParsed(90,Colours.YELLOW, 23500);
         MyClassParsed tram3 = new MyClassParsed(120,Colours.ORANGE, 19500);
 
+        List<MyClass> sortByPrice = new ArrayList<>();
+
+        sortByPrice.add(troll1);
+        sortByPrice.add(troll2);
+        sortByPrice.add(troll3);
+        sortByPrice.add(bus1);
+        sortByPrice.add(bus2);
+        sortByPrice.add(bus3);
+        //sortByPrice.add(tram1.price);
+        //sortByPrice.add(tram2.price);
+        //sortByPrice.add(tram3.price);
 
 
         System.out.println("Hello, it's dispatcher of trolleybus fleet");
@@ -116,11 +122,21 @@ public class Main {
 
         System.out.println("Tap 0 to skip ");
 
-        int[] array = {troll1.price, troll2.price, troll3.price, bus1.price, bus2.price, bus3.price};
-        for (int i = 0; i < array.length; i++) {
-           // System.out.println(array[i]);
-        }
+        sortByPrice.sort(new Comparator<MyClass>() {
+            @Override
+            public int compare(MyClass o1, MyClass o2) {
+                if (o1.fuelTank == o2.price) return 0;
+                else if (o1.price> o2.price) return 1;
+                else return -1;
+            }
+        });
 
+        //Вывод элементов
+
+        for(int i =0 ; i<sortByPrice.toArray().length; i++)
+        {
+            System.out.println(sortByPrice.get(i).colour+ " " +sortByPrice.get(i).fuelTank+ " " +sortByPrice.get(i).price);
+        }
         Scanner Modification = new Scanner(System.in);
         int yourModification = Modification.nextInt();
 
