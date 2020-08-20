@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Main;
 
 import java.util.Objects;
 
@@ -25,8 +25,8 @@ public abstract class Transport {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof com.company.Trolleybus)) return false;
-        com.company.Trolleybus that = (com.company.Trolleybus) o;
+        if (!(o instanceof Trolleybus)) return false;
+        Trolleybus that = (Trolleybus) o;
         return getFuelTank() == that.getFuelTank() &&
                 getPrice() == that.getPrice() &&
                 Double.compare(that.getCoefficientPrice(), getCoefficientPrice()) == 0 &&

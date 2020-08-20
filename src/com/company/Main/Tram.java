@@ -1,8 +1,9 @@
-package com.company;
+package com.company.Main;
 
-import java.util.Objects;
+import com.company.Main.Main;
+import com.company.Main.Transport;
 
-public  class Tram extends Transport{
+public  class Tram extends Transport {
 
     private int capacity;
     private String type;
